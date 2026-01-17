@@ -1,7 +1,6 @@
 services:
   mongo:
     image: mongo:7
-    container_name: mongo
     ports:
       - "27017:27017"
     volumes:
@@ -9,7 +8,6 @@ services:
 
   kafka:
     image: apache/kafka:3.7.0
-    container_name: kafka
     ports:
       - "9092:9092"
     environment:
@@ -28,12 +26,8 @@ services:
   backend:
     build:
       context: ./CorporateBankingSystem
-    container_name: banking-backend
     ports:
       - "4040:4040"
-    environment:
-      SPRING_PROFILES_ACTIVE: docker
-      ADMIN_PASSWORD: admin123
     depends_on:
       - mongo
       - kafka
@@ -41,7 +35,6 @@ services:
   frontend:
     build:
       context: ./banking-frontend
-    container_name: banking-frontend
     ports:
       - "4200:80"
     depends_on:
