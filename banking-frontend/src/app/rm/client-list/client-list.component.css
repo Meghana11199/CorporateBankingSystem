@@ -1,0 +1,152 @@
+/* ===== PAGE BASE ===== */
+.create-user-page {
+  min-height: 100vh;
+  background: linear-gradient(145deg, #3795c0, #2687a5);
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ===== HEADER ===== */
+.rm-header {
+  background: linear-gradient(145deg, #3795c0, #2687a5);
+  color: #fff;
+  padding: 16px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bank-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bank-logo {
+  font-size: 28px;
+}
+.bank-brand h2{
+  font-size: 25px;
+  margin-top: 15px;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rm-role {
+  font-weight: 600;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+
+.logout-btn {
+  background: #ffffff !important;
+  color:#3795c0 !important;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+/* ===== BODY CONTAINER ===== */
+.client-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+/* ===== MAIN CARD ===== */
+.client-card {
+  width: 100%;
+  max-width: 1100px;
+  padding: 32px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ffffff, #dde1e4);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== SEARCH CARD ===== */
+.search-card {
+  padding: 18px 20px;
+  border-radius: 14px;
+  margin-bottom: 28px;
+  height: 100px;
+  background: #ffffff;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+/* Full width input */
+.full-width {
+  width: 100%;
+}
+
+/* ===== TITLES ===== */
+.page-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 6px;
+  color: #0f172a;
+}
+
+.subtitle {
+  text-align: center;
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+/* ===== TABLE WRAPPER ===== */
+.table-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+}
+
+/* ===== TABLE ===== */
+.client-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th.mat-header-cell {
+  background: #f1f5f9;
+  font-weight: 700;
+  color: #0f172a;
+  padding: 14px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+td.mat-cell {
+  padding: 14px;
+  color: #334155;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+tr.mat-row:hover {
+  background: #f8fafc;
+}
+
+/* ===== PAGINATOR ===== */
+mat-paginator {
+  margin-top: 18px;
+  background: transparent;
+}
+
+/* ===== FOOTER ===== */
+.page-footer {
+  text-align: center;
+  padding: 14px;
+  font-size: 13px;
+  color: #dce6ef;
+  background: linear-gradient(145deg, #3795c0, #2687a5);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .client-card {
+    padding: 22px;
+  }
+}

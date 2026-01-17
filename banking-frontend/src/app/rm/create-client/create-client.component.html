@@ -1,0 +1,99 @@
+<div class="create-user-page">
+
+  <!-- ===== HEADER ===== -->
+  <header class="rm-header">
+    <div class="bank-brand">
+      <span class="bank-logo">🏦</span>
+      <h2>CBS BANK</h2>
+    </div>
+
+    <div class="header-right">
+      <span class="rm-role">RM</span>
+      <button mat-raised-button class="logout-btn" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== BODY ===== -->
+  <div class="create-user-container">
+
+    <mat-card class="create-user-card">
+
+      <button mat-stroked-button class="back-btn" (click)="goBackToDashboard()">
+        ← Back to Dashboard
+      </button>
+
+      <h2>Create Corporate Client</h2>
+      <p class="subtitle">Enter corporate client details</p>
+
+      <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+
+        <!-- Company Name -->
+        <label class="field-label">Company Name</label>
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput formControlName="companyName">
+        </mat-form-field>
+
+        <!-- Industry -->
+        <label class="field-label">Industry</label>
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput formControlName="industry">
+        </mat-form-field>
+
+        <!-- Address -->
+        <label class="field-label">Address</label>
+        <mat-form-field appearance="outline" class="full-width">
+          <textarea matInput rows="3" formControlName="address"></textarea>
+        </mat-form-field>
+
+        <!-- Primary Contact -->
+        <label class="field-label">Primary Contact Name</label>
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput formControlName="primaryName">
+        </mat-form-field>
+
+        <!-- Email -->
+        <label class="field-label">Email</label>
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput type="email" formControlName="primaryEmail">
+        </mat-form-field>
+
+        <!-- Phone -->
+        <label class="field-label">Phone</label>
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput formControlName="primaryPhone">
+        </mat-form-field>
+
+        <!-- Turnover -->
+        <label class="field-label">Annual Turnover (Cr)</label>
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput type="number" formControlName="annualTurnover">
+        </mat-form-field>
+
+        <!-- Documents -->
+        <mat-checkbox formControlName="documentsSubmitted" class="doc-check">
+          Documents Submitted
+        </mat-checkbox>
+
+        <!-- Submit -->
+        <button mat-raised-button
+                color="primary"
+                class="create-btn"
+                type="submit"
+                [disabled]="clientForm.invalid || loading">
+          Create Client
+        </button>
+
+      </form>
+
+    </mat-card>
+
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="page-footer">
+    © 2026 CBS BANK. Secure RM Portal.
+  </footer>
+
+</div>

@@ -1,0 +1,47 @@
+<div class="create-user-page"> <!-- ===== HEADER (DO NOT CHANGE) ===== -->
+  <header class="rm-header">
+    <div class="bank-brand"> <span class="bank-logo">🏦</span>
+      <h2>CBS BANK</h2>
+    </div>
+    <div class="header-right"> <span class="rm-role">RM</span> <button mat-raised-button class="logout-btn"
+        (click)="logout()"> Logout </button> </div>
+  </header> <!-- ===== BODY ===== -->
+  <div class="client-container"> <mat-card class="client-card"> <!-- Top controls -->
+      <div class="card-top"> <button mat-stroked-button class="back-btn" (click)="goBackToDashboard()"> ← Back to
+          Dashboard </button> <br><br> <mat-card class="search-card"> <mat-form-field appearance="outline"
+            class="full-width"> <mat-label>Search Clients</mat-label> <input matInput
+              placeholder="Search by company, email, phone" (keyup)="applyFilter($event)"> </mat-form-field> </mat-card>
+      </div> <!-- Title -->
+      <h2 class="page-title">Corporate Clients</h2>
+      <p class="subtitle">List of onboarded corporate customers</p> <!-- Table -->
+      <div class="table-wrapper">
+        <table mat-table [dataSource]="dataSource" class="client-table">
+           <caption>Client List</caption>
+            <!-- Company --> <ng-container
+            matColumnDef="companyName">
+            <th mat-header-cell *matHeaderCellDef>Company</th>
+            <td mat-cell *matCellDef="let client"> {{ client.companyName }} </td>
+          </ng-container> <!-- Email --> <ng-container matColumnDef="primaryEmail">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let client"> {{ client.primaryEmail }} </td>
+          </ng-container> <!-- Phone --> <ng-container matColumnDef="primaryPhone">
+            <th mat-header-cell *matHeaderCellDef>Phone</th>
+            <td mat-cell *matCellDef="let client"> {{ client.primaryPhone }} </td>
+          </ng-container> <!-- Turnover --> <ng-container matColumnDef="annualTurnover">
+            <th mat-header-cell *matHeaderCellDef>Turnover (Cr)</th>
+            <td mat-cell *matCellDef="let client"> {{ client.annualTurnover | number:'1.2-2' }} </td>
+          </ng-container> <!-- Actions --> <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let client"> <button mat-stroked-button color="primary"
+                (click)="viewDetails(client)"> View </button> <button mat-stroked-button color="accent"
+                (click)="editClient(client)"> Edit </button> </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+      <div class="empty-state" *ngIf="dataSource.filteredData.length === 0"> No corporate clients found </div>
+      <!-- Pagination --> <mat-paginator [pageSize]="5" showFirstLastButtons> </mat-paginator>
+    </mat-card> </div> <!-- ===== FOOTER (DO NOT CHANGE) ===== -->
+  <footer class="page-footer"> © 2026 CBS BANK. Secure RM Portal. </footer>
+</div>

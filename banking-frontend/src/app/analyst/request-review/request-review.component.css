@@ -1,0 +1,105 @@
+/* ================= PAGE ================= */
+.credit-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f4f7fb;
+}
+
+/* ================= CONTENT ================= */
+.credit-container {
+  flex: 1;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.credit-card {
+  width: 100%;
+  max-width: 1200px;
+  padding: 24px;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+/* ================= ACTION BAR ================= */
+.body-actions {
+  margin-bottom: 12px;
+}
+.back-btn {
+  background: #ffffff !important;
+  color: #3795c0 !important;
+  font-weight: 600;
+  border-radius: 15px;
+  padding:10px;
+}
+
+/* ================= TITLE ================= */
+.page-title {
+  margin: 12px 0 20px;
+  color: #3795c0;
+  font-size: 22px;
+  /* font-weight: 600; */
+}
+
+/* ================= TABLE ================= */
+table {
+  width: 100%;
+}
+
+th {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+td {
+  font-size: 14px;
+  color: #334155;
+}
+
+/* ================= STATUS ================= */
+.status-pill {
+  padding: 6px 14px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-pill.approved {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.status-pill.rejected {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+/* ================= STATES ================= */
+.loading-text {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 28px;
+  font-size: 15px;
+  color: #64748b;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .credit-card {
+    padding: 16px;
+  }
+
+  th,
+  td {
+    font-size: 12px;
+  }
+}

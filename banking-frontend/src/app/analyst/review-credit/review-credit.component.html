@@ -1,0 +1,119 @@
+<div class="credit-page">
+
+  <!-- ===== HEADER ===== -->
+  <header class="rm-header">
+    <div class="bank-brand">
+      <span class="bank-logo">🏦</span>
+      <h2>CBS BANK</h2>
+    </div>
+
+    <div class="header-right">
+      <span class="rm-role">ANALYST</span>
+      <button
+        mat-raised-button
+        disableRipple
+        class="logout-btn"
+        (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== CONTENT ===== -->
+  <div class="credit-container">
+
+    <mat-card class="review-card" *ngIf="!loading">
+
+      <!-- ACTION BAR -->
+      <div class="body-actions">
+        <button
+          mat-stroked-button
+          class="back-btn"
+          (click)="cancel()">
+          ← Back to Pending Requests
+        </button>
+      </div>
+
+      <!-- TITLE -->
+      <h2 class="page-title">Review Credit Request</h2>
+
+      <!-- REQUEST INFO -->
+      <div class="info-grid">
+        <div>
+          <label>Client</label>
+          <p>{{ request.clientId }}</p>
+        </div>
+
+        <div>
+          <label>Requested Amount</label>
+          <p>₹ {{ request.requestedAmount | number }}</p>
+        </div>
+
+        <div>
+          <label>Tenure</label>
+          <p>{{ request.tenureMonths }} months</p>
+        </div>
+
+        <div>
+          <label>Purpose</label>
+          <p>{{ request.purpose }}</p>
+        </div>
+
+        <div>
+          <label>Status</label>
+          <span class="status-pill pending">{{ request.status }}</span>
+        </div>
+      </div>
+
+      <!-- COMMENT -->
+      <mat-form-field appearance="outline" class="comment-box">
+        <mat-label>Analyst Comment</mat-label>
+        <textarea
+          matInput
+          rows="4"
+          [(ngModel)]="analystComment"
+          placeholder="Enter your remarks...">
+        </textarea>
+      </mat-form-field>
+
+      <!-- ACTIONS -->
+      <div class="actions">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="submit('APPROVED')"
+          [disabled]="submitting">
+          Approve
+        </button>
+
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="submit('REJECTED')"
+          [disabled]="submitting">
+          Reject
+        </button>
+
+        <button
+          mat-stroked-button
+          (click)="cancel()"
+          [disabled]="submitting">
+          Cancel
+        </button>
+      </div>
+
+    </mat-card>
+
+    <!-- LOADING -->
+    <p class="loading-text" *ngIf="loading">
+      Loading credit request...
+    </p>
+
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="page-footer">
+    © 2026 CBS BANK. Secure Credit Platform.
+  </footer>
+
+</div>

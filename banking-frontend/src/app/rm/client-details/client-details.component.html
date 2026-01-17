@@ -1,0 +1,103 @@
+<div class="client-details-page">
+
+  <!-- ===== HEADER ===== -->
+  <header class="rm-header">
+    <div class="bank-brand">
+      <span class="bank-logo">🏦</span>
+      <h2>CBS BANK</h2>
+    </div>
+
+    <div class="header-right">
+      <span class="rm-role">RM</span>
+        <button mat-raised-button class="logout-btn" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== BODY ===== -->
+  <div class="details-container">
+
+    <!-- LOADING -->
+    <mat-card class="state-card" *ngIf="loading">
+      <p class="loading-text">Loading client details…</p>
+    </mat-card>
+
+    <!-- ERROR -->
+    <mat-card class="state-card error-card" *ngIf="!loading && errorMsg">
+      <p class="error-text">{{ errorMsg }}</p>
+      <button mat-stroked-button color="primary" (click)="goBack()">
+        ← Back to Clients
+      </button>
+    </mat-card>
+
+    <!-- CLIENT DETAILS -->
+    <mat-card class="details-card" *ngIf="!loading && client">
+
+      <h2 class="company-name">{{ client.companyName }}</h2>
+      <p class="subtitle">Corporate Client Details</p>
+
+      <div class="details-grid">
+
+        <div class="detail-item">
+          <span class="label">Industry</span>
+          <span class="value">{{ client.industry }}</span>
+        </div>
+
+        <div class="detail-item">
+          <span class="label">Primary Contact</span>
+          <span class="value">{{ client.primaryName }}</span>
+        </div>
+
+        <div class="detail-item">
+          <span class="label">Email</span>
+          <span class="value">{{ client.primaryEmail }}</span>
+        </div>
+
+        <div class="detail-item">
+          <span class="label">Phone</span>
+          <span class="value">{{ client.primaryPhone }}</span>
+        </div>
+
+        <div class="detail-item">
+          <span class="label">Annual Turnover</span>
+          <span class="value">
+            {{ client.annualTurnover | number:'1.2-2' }} Cr
+          </span>
+        </div>
+
+        <div class="detail-item">
+          <span class="label">Documents Submitted</span>
+          <span
+            class="status"
+            [class.yes]="client.documentsSubmitted"
+            [class.no]="!client.documentsSubmitted">
+            {{ client.documentsSubmitted ? 'Yes' : 'No' }}
+          </span>
+        </div>
+
+        <div class="detail-item full-width">
+          <span class="label">Address</span>
+          <span class="value address">
+            {{ client.address }}
+          </span>
+        </div>
+
+      </div>
+
+      <div class="actions">
+        <button mat-raised-button color="primary" (click)="goBack()">
+          ← Back to Clients
+        </button>
+      </div>
+
+    </mat-card>
+
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="page-footer">
+    © 2026 CBS BANK. Secure RM Portal.
+  </footer>
+
+</div>

@@ -1,0 +1,173 @@
+/* ================= PAGE BASE ================= */
+.credit-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(145deg, #3795c0, #2687a5);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ================= HEADER ================= */
+.rm-header {
+  background: linear-gradient(145deg, #3795c0, #2687a5);
+  color: #ffffff;
+  padding: 16px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bank-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bank-logo {
+  font-size: 28px;
+}
+.bank-brand h2{
+  font-size: 25px;
+  margin-top: 15px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rm-role {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+}
+
+/* ================= LOGOUT ================= */
+::ng-deep .logout-btn.mat-mdc-raised-button {
+  background-color: #ffffff !important;
+  border-radius: 8px;
+}
+
+::ng-deep .logout-btn .mdc-button__label {
+  color:  #3795c0 !important;
+  font-weight: 600;
+}
+
+/* ================= CONTENT ================= */
+.credit-container {
+  flex: 1;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.review-card {
+  width: 100%;
+  max-width: 800px;
+  padding: 28px;
+  border-radius: 16px;
+}
+
+/* ================= ACTION BAR ================= */
+.body-actions {
+  margin-bottom: 12px;
+}
+
+/* ================= BACK BUTTON ================= */
+::ng-deep .back-btn.mat-mdc-stroked-button {
+  border-color:  #3795c0 !important;
+  border-radius: 20px;
+}
+
+::ng-deep .back-btn .mdc-button__label {
+  color:  #3795c0 !important;
+  font-weight: 600;
+}
+
+/* ================= TITLE ================= */
+.page-title {
+  margin: 12px 0 20px;
+  color: #0f172a;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* ================= INFO GRID ================= */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.info-grid label {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.info-grid p {
+  margin: 4px 0 0;
+  font-size: 15px;
+  color: #0f172a;
+}
+
+/* ================= STATUS ================= */
+.status-pill {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-pill.pending {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+/* ================= COMMENT ================= */
+.comment-box {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* ================= ACTIONS ================= */
+.actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+/* ================= LOADING ================= */
+.loading-text {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #334155;
+}
+
+/* ================= FOOTER ================= */
+.page-footer {
+  text-align: center;
+  padding: 14px;
+  font-size: 13px;
+  color: #dce6ef;
+  background: linear-gradient(145deg, #3795c0, #2687a5);
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .review-card {
+    padding: 18px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}

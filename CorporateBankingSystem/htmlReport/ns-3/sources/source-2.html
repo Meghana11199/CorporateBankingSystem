@@ -1,0 +1,164 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > AnalystCreditRequestController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example.corporatebankingsystem.Controller</a>
+</div>
+
+<h1>Coverage Summary for Class: AnalystCreditRequestController (org.example.corporatebankingsystem.Controller)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AnalystCreditRequestController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">AnalystCreditRequestController$$SpringCGLIB$$0</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example.corporatebankingsystem.Controller;
+&nbsp;
+&nbsp;import jakarta.validation.Valid;
+&nbsp;import org.example.corporatebankingsystem.Dto.CreditRequestResponseDto;
+&nbsp;import org.example.corporatebankingsystem.Dto.CreditRequestUpdateDto;
+&nbsp;import org.example.corporatebankingsystem.Service.CreditRequestService;
+&nbsp;import org.springframework.security.access.prepost.PreAuthorize;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;@RestController
+&nbsp;@RequestMapping(&quot;/api/analyst/credit-requests&quot;)
+&nbsp;@PreAuthorize(&quot;hasRole(&#39;ANALYST&#39;)&quot;)
+&nbsp;@CrossOrigin(origins = &quot;http://localhost:4200&quot;)
+&nbsp;public class AnalystCreditRequestController {
+&nbsp;
+&nbsp;    private final CreditRequestService service;
+&nbsp;
+<b class="fc">&nbsp;    public AnalystCreditRequestController(CreditRequestService service) {</b>
+<b class="fc">&nbsp;        this.service = service;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/pending&quot;)
+&nbsp;    public List&lt;CreditRequestResponseDto&gt; getPending() {
+<b class="fc">&nbsp;        return service.getPendingRequests();</b>
+&nbsp;    }
+&nbsp;    @PutMapping(&quot;/{id}&quot;)
+&nbsp;    public CreditRequestResponseDto updateStatus(
+&nbsp;            @PathVariable String id,
+&nbsp;            @Valid @RequestBody CreditRequestUpdateDto dto) {
+&nbsp;
+<b class="fc">&nbsp;        return service.updateStatus(id, dto);</b>
+&nbsp;    }
+&nbsp;    @GetMapping(&quot;/{id}&quot;)
+&nbsp;    public CreditRequestResponseDto getById(@PathVariable String id) {
+<b class="fc">&nbsp;        return service.getById(id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping
+&nbsp;    public List&lt;CreditRequestResponseDto&gt; getAll() {
+<b class="fc">&nbsp;        return service.getAllRequests();</b>
+&nbsp;    }
+&nbsp;//    @GetMapping(&quot;/{id}&quot;)
+&nbsp;//    public CreditRequestResponseDto getById(@PathVariable String id) {
+&nbsp;//        return service.getById(id);
+&nbsp;//    }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2026-01-12 18:29</div>
+</div>
+</body>
+</html>

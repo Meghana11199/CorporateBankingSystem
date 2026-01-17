@@ -1,0 +1,90 @@
+/* ================= PAGE ================= */
+.credit-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Arial, sans-serif;
+   background: linear-gradient(145deg, #3795c0, #2687a5);
+}
+
+/* ================= CONTENT ================= */
+.credit-container {
+  flex: 1;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.credit-card {
+  width: 100%;
+  max-width: 1100px;
+  padding: 24px;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+/* ================= ACTION BAR ================= */
+.body-actions {
+  margin-bottom: 12px;
+}
+
+/* ================= TITLE ================= */
+.page-title {
+  margin: 12px 0 20px;
+  color: #3795c0;
+  font-size: 22px;
+  /* font-weight: 600; */
+}
+
+/* ================= TABLE ================= */
+table {
+  width: 100%;
+}
+
+th {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+td {
+  font-size: 14px;
+  color: #334155;
+}
+
+/* ================= BUTTON ================= */
+.review-btn {
+  border-radius: 20px;
+}
+
+/* ================= STATES ================= */
+.loading-text {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.error-text {
+  text-align: center;
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 24px;
+  color: #64748b;
+  font-size: 15px;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .credit-card {
+    padding: 16px;
+  }
+
+  th,
+  td {
+    font-size: 12px;
+  }
+}

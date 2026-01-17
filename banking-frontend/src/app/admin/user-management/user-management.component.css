@@ -1,0 +1,163 @@
+/* PAGE */
+.user-management-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ================= HEADER ================= */
+.admin-header {
+  background: linear-gradient(145deg, #3795c0, #2687a5);
+  color: #fff;
+  padding: 16px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bank-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.bank-brand h2{
+  font-size: 25px;
+  margin-top: 15px;
+}
+
+.bank-logo {
+  font-size: 28px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.admin-role {
+  background: rgba(255,255,255,0.2);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.logout-btn {
+  background: #ffffff !important;
+  color: #3795c0 !important;
+  font-weight: 600;
+}
+
+/* ================= BODY ================= */
+.user-management-body {
+  flex: 1;
+  padding: 36px;
+  background: linear-gradient(135deg, #f4f7fb, #e9eef3);
+}
+
+.top-bar {
+  margin-bottom: 24px;
+}
+
+.page-title {
+  color: #3795c0;
+  margin-bottom: 6px;
+  font-size: 25px;
+  
+}
+
+.page-subtitle {
+  color: #555;
+  margin-bottom: 28px;
+}
+
+/* ================= INFO / ERROR ================= */
+.info-card {
+  padding: 18px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 14px;
+}
+
+.error-card {
+  padding: 18px;
+  text-align: center;
+  background: #fdecea;
+  color: #b71c1c;
+  border-radius: 14px;
+}
+
+/* ================= USERS GRID ================= */
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* USER CARD */
+.user-card {
+  padding: 15px;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  transition: 0.3s;
+}
+
+.user-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(0,0,0,0.18);
+}
+
+.user-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.user-header h3 {
+  margin: 0;
+  color: #3795c0;
+  font-size: 25px;
+}
+
+/* STATUS BADGE */
+.status {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status.active {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status.inactive {
+  background: #ffebee;
+  color: #c62828;
+}
+
+/* BODY */
+.user-body p {
+  margin: 6px 0;
+  color: #444;
+  font-size: 14px;
+}
+
+/* ACTIONS */
+.user-actions {
+  margin-top: 16px;
+  text-align: right;
+}
+
+/* ================= FOOTER ================= */
+.admin-footer {
+  text-align: center;
+  padding: 14px;
+  font-size: 13px;
+  color: #dce6ef;
+  background: linear-gradient(145deg, #3795c0, #2687a5);
+}

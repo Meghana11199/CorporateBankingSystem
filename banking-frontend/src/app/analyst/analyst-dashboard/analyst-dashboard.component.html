@@ -1,0 +1,54 @@
+<div class="analyst-dashboard">
+
+  <!-- ===== HEADER (REUSABLE) ===== -->
+  <app-analyst-header
+    role="ANALYST"
+    (logout)="logout()">
+  </app-analyst-header>
+
+  <!-- ===== BODY ===== -->
+  <main class="admin-body">
+
+    <h2 class="page-title">Analyst Dashboard</h2>
+    <p class="subtitle">Credit Risk & Request Process</p>
+
+    <div class="card-grid">
+
+      <!-- CARD 1 -->
+      <mat-card
+        class="dashboard-card"
+        role="button"
+        tabindex="0"
+        aria-label="View Pending Credit Requests"
+        (click)="goToPending()"
+        (keydown.enter)="goToPending()">
+        <h3>📄 View Pending Credit Requests</h3>
+        <p>
+          Review all pending credit requests awaiting analyst action.
+        </p>
+      </mat-card>
+
+      <!-- CARD 2 -->
+      <mat-card
+        class="dashboard-card"
+        role="button"
+        tabindex="0"
+        aria-label="View Reviewed Credit Requests"
+        (click)="goToReview()"
+        (keydown.enter)="goToReview()">
+        <h3>✅ Request Review Page</h3>
+        <p>
+          View, approve, or reject all submitted credit requests.
+        </p>
+      </mat-card>
+
+    </div>
+
+    <router-outlet></router-outlet>
+
+  </main>
+
+  <!-- ===== FOOTER (REUSABLE) ===== -->
+  <app-footer></app-footer>
+
+</div>

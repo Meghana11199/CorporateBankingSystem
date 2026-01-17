@@ -1,0 +1,91 @@
+<div class="user-management-page">
+
+  <!-- ================= HEADER ================= -->
+  <header class="admin-header">
+    <div class="bank-brand">
+      <span class="bank-logo">🏦</span>
+      <h2>CBS BANK</h2>
+    </div>
+
+    <div class="header-right">
+      <span class="admin-role">ADMIN</span>
+      <button mat-raised-button class="logout-btn" routerLink="/login">
+        Logout
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= BODY ================= -->
+  <main class="user-management-body">
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+      <button mat-stroked-button color="primary" routerLink="/admin">
+        <mat-icon>arrow_back</mat-icon>
+        Back to Dashboard
+      </button>
+    </div>
+
+    <h2 class="page-title">Employee Management</h2>
+    <p class="page-subtitle">
+      Manage employee access and activation status
+    </p>
+
+    <!-- Loading -->
+    <mat-card *ngIf="loading" class="info-card">
+      Loading users...
+    </mat-card>
+
+    <!-- Error -->
+    <mat-card *ngIf="errorMessage" class="error-card">
+      {{ errorMessage }}
+    </mat-card>
+
+    <!-- Users Grid -->
+    <div class="users-grid" *ngIf="!loading && users.length">
+
+      <mat-card class="user-card" *ngFor="let u of users">
+
+        <div class="user-header">
+          <h3>{{ u.username }}</h3>
+
+          <span
+            class="status"
+            [class.active]="u.active"
+            [class.inactive]="!u.active">
+            {{ u.active ? 'ACTIVE' : 'INACTIVE' }}
+          </span>
+        </div>
+
+        <div class="user-body">
+          <p><strong>Email:</strong> {{ u.email }}</p>
+          <p><strong>Password:</strong> ********</p>
+          <p><strong>Role:</strong> {{ u.role }}</p>
+        </div>
+
+        <div class="user-actions">
+          <button
+            mat-raised-button
+            [color]="u.active ? 'warn' : 'primary'"
+            (click)="toggleStatus(u)">
+            {{ u.active ? 'Deactivate' : 'Activate' }}
+          </button>
+        </div>
+
+      </mat-card>
+
+    </div>
+
+    <!-- Empty -->
+    <mat-card *ngIf="!loading && !users.length" class="info-card">
+      No users found.
+    </mat-card>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="admin-footer">
+    © 2026 CBS BANK. Secure Admin Panel.
+  </footer>
+
+</div>

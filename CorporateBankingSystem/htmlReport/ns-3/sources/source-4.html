@@ -1,0 +1,165 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > RmController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example.corporatebankingsystem.Controller</a>
+</div>
+
+<h1>Coverage Summary for Class: RmController (org.example.corporatebankingsystem.Controller)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RmController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">RmController$$SpringCGLIB$$0</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example.corporatebankingsystem.Controller;
+&nbsp;
+&nbsp;import jakarta.validation.Valid;
+&nbsp;import org.example.corporatebankingsystem.Dto.ClientRequest;
+&nbsp;import org.example.corporatebankingsystem.Dto.ClientResponse;
+&nbsp;import org.example.corporatebankingsystem.Service.ClientService;
+&nbsp;import org.springframework.security.access.prepost.PreAuthorize;
+&nbsp;import org.springframework.security.core.annotation.AuthenticationPrincipal;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;@RestController
+&nbsp;@RequestMapping(&quot;/api/rm/clients&quot;)
+&nbsp;@CrossOrigin(origins = &quot;http://localhost:4200&quot;)
+&nbsp;public class RmController {
+&nbsp;
+&nbsp;    private final ClientService clientService;
+&nbsp;
+<b class="fc">&nbsp;    public RmController(ClientService clientService) {</b>
+<b class="fc">&nbsp;        this.clientService = clientService;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping
+&nbsp;    @PreAuthorize(&quot;hasRole(&#39;RM&#39;)&quot;)
+&nbsp;    public ClientResponse createClient(@Valid @RequestBody ClientRequest dto,
+&nbsp;                                       @AuthenticationPrincipal String rmId) {
+<b class="fc">&nbsp;        return clientService.createClient(dto, rmId);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping
+&nbsp;    @PreAuthorize(&quot;hasRole(&#39;RM&#39;)&quot;)
+&nbsp;    public List&lt;ClientResponse&gt; getClients(@AuthenticationPrincipal String rmId) {
+<b class="fc">&nbsp;        return clientService.getClientsForRm(rmId);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/{id}&quot;)
+&nbsp;    @PreAuthorize(&quot;hasRole(&#39;RM&#39;)&quot;)
+&nbsp;    public ClientResponse getClient(@PathVariable String id,
+&nbsp;                                    @AuthenticationPrincipal String rmId) {
+<b class="fc">&nbsp;        return clientService.getClientById(id, rmId);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PutMapping(&quot;/{id}&quot;)
+&nbsp;    @PreAuthorize(&quot;hasRole(&#39;RM&#39;)&quot;)
+&nbsp;    public ClientResponse updateClient(@PathVariable String id,
+&nbsp;                                       @Valid @RequestBody ClientRequest dto,
+&nbsp;                                       @AuthenticationPrincipal String rmId) {
+<b class="fc">&nbsp;        return clientService.updateClient(id, dto, rmId);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2026-01-12 18:29</div>
+</div>
+</body>
+</html>

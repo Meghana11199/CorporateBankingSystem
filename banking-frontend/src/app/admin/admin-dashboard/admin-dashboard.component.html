@@ -1,0 +1,54 @@
+<div class="admin-dashboard">
+
+  <!-- ================= HEADER ================= -->
+  <header class="admin-header">
+    <div class="bank-brand">
+      <span class="bank-logo">🏦</span>
+      <h2>CBS BANK</h2>
+    </div>
+
+    <div class="header-right">
+      <span class="admin-role">ADMIN</span>
+      <button mat-raised-button class="logout-btn" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= BODY ================= -->
+  <main class="admin-body">
+
+    <h2 class="title">Admin Dashboard</h2>
+    <p class="subtitle">User & System Administration</p>
+
+    <div class="card-grid">
+
+      <!-- CARD 1 -->
+      <mat-card class="dashboard-card" (click)="goToCreateUser()">
+        <h3>👤 Create Employee</h3>
+        <p>
+          Add new employees with roles and access permissions.
+        </p>
+      </mat-card>
+
+      <!-- CARD 2 -->
+      <mat-card class="dashboard-card" (click)="goToManageUsers()">
+        <h3>🛠️ Manage Employees</h3>
+        <p>
+          View, activate or deactivate existing employees.
+        </p>
+      </mat-card>
+
+    </div>
+
+    <!-- CHILD ROUTES -->
+    <router-outlet></router-outlet>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="admin-footer">
+    © 2026 CBS BANK. Secure Admin Dashboard.
+  </footer>
+
+</div>

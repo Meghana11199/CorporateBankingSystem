@@ -1,0 +1,54 @@
+<div class="login-page">
+
+  <!-- HEADER -->
+  <header class="login-header">
+    <div class="bank-brand">
+      <span class="bank-logo">🏦</span>
+      <h1>CBS BANK</h1>
+    </div>
+    <span class="tagline">Corporate Banking Secure Portal</span>
+  </header>
+
+  <!-- LOGIN BODY -->
+  <div class="login-container">
+    <mat-card class="login-card">
+
+      <h2>Welcome To CBS Bank</h2>
+      <p class="subtitle">Please login to your account</p>
+
+      <form [formGroup]="loginForm" (ngSubmit)="submit()">
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" />
+        </mat-form-field>
+
+        <!-- ERROR MESSAGE -->
+        <div class="error" *ngIf="error">
+          {{ error }}
+        </div>
+
+        <button
+          mat-raised-button
+          color="primary"
+          class="login-btn"
+          [disabled]="loading || loginForm.invalid">
+          {{ loading ? 'Signing In...' : 'Login' }}
+        </button>
+
+      </form>
+
+    </mat-card>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="login-footer">
+    © 2026 CBS BANK. Secure Corporate Banking Platform.
+  </footer>
+
+</div>

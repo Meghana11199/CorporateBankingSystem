@@ -1,0 +1,226 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > ClientService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example.corporatebankingsystem.Service</a>
+</div>
+
+<h1>Coverage Summary for Class: ClientService (org.example.corporatebankingsystem.Service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ClientService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (3/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    98%
+  </span>
+  <span class="absValue">
+    (50/51)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example.corporatebankingsystem.Service;
+&nbsp;
+&nbsp;import org.example.corporatebankingsystem.Dto.ClientRequest;
+&nbsp;import org.example.corporatebankingsystem.Dto.ClientResponse;
+&nbsp;import org.example.corporatebankingsystem.Model.Client;
+&nbsp;import org.example.corporatebankingsystem.Model.PrimaryContact;
+&nbsp;import org.example.corporatebankingsystem.Repo.ClientRepository;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;import java.util.stream.Collectors;
+&nbsp;
+&nbsp;@Service
+&nbsp;public class ClientService {
+&nbsp;
+&nbsp;    private final ClientRepository clientRepo;
+&nbsp;
+<b class="fc">&nbsp;    public ClientService(ClientRepository clientRepo) {</b>
+<b class="fc">&nbsp;        this.clientRepo = clientRepo;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Create a new client for the given RM ID
+&nbsp;     */
+&nbsp;    public ClientResponse createClient(ClientRequest dto, String rmId) {
+<b class="fc">&nbsp;        Client client = Client.builder()</b>
+<b class="fc">&nbsp;                .companyName(dto.getCompanyName())</b>
+<b class="fc">&nbsp;                .industry(dto.getIndustry())</b>
+<b class="fc">&nbsp;                .address(dto.getAddress())</b>
+<b class="fc">&nbsp;                .primaryContact(new PrimaryContact(</b>
+<b class="fc">&nbsp;                        dto.getPrimaryName(),</b>
+<b class="fc">&nbsp;                        dto.getPrimaryEmail(),</b>
+<b class="fc">&nbsp;                        dto.getPrimaryPhone()</b>
+&nbsp;                ))
+<b class="fc">&nbsp;                .annualTurnover(dto.getAnnualTurnover())</b>
+<b class="fc">&nbsp;                .documentsSubmitted(dto.isDocumentsSubmitted())</b>
+<b class="fc">&nbsp;                .rmId(rmId) // RM ID from JWT</b>
+<b class="fc">&nbsp;                .build();</b>
+&nbsp;
+<b class="fc">&nbsp;        Client saved =clientRepo.save(client);</b>
+<b class="fc">&nbsp;        return mapToDto(saved);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Get all clients assigned to a specific RM
+&nbsp;     */
+&nbsp;    public List&lt;ClientResponse&gt; getClientsForRm(String rmId) {
+<b class="fc">&nbsp;        return clientRepo.findByRmId(rmId)</b>
+<b class="fc">&nbsp;                .stream()</b>
+<b class="fc">&nbsp;                .map(this::mapToDto)</b>
+<b class="fc">&nbsp;                .collect(Collectors.toList());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Get a specific client by ID for the RM
+&nbsp;     */
+&nbsp;    public ClientResponse getClientById(String clientId, String rmId) {
+<b class="fc">&nbsp;        Client client = (Client) clientRepo.findById(clientId)</b>
+<b class="fc">&nbsp;                .orElseThrow(() -&gt; new RuntimeException(&quot;Client not found&quot;));</b>
+&nbsp;
+<b class="fc">&nbsp;        if (!client.getRmId().equals(rmId)) {</b>
+<b class="fc">&nbsp;            throw new RuntimeException(&quot;Access denied&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        return mapToDto(client);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Update a client by ID for the RM
+&nbsp;     */
+&nbsp;    public ClientResponse updateClient(String clientId, ClientRequest dto, String rmId) {
+<b class="fc">&nbsp;        Client client = (Client) clientRepo.findById(clientId)</b>
+<b class="fc">&nbsp;                .orElseThrow(() -&gt; new RuntimeException(&quot;Client not found&quot;));</b>
+&nbsp;
+<b class="pc">&nbsp;        if (!client.getRmId().equals(rmId)) {</b>
+<b class="nc">&nbsp;            throw new RuntimeException(&quot;Access denied&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        client.setCompanyName(dto.getCompanyName());</b>
+<b class="fc">&nbsp;        client.setIndustry(dto.getIndustry());</b>
+<b class="fc">&nbsp;        client.setAddress(dto.getAddress());</b>
+<b class="fc">&nbsp;        client.setPrimaryContact(new PrimaryContact(</b>
+<b class="fc">&nbsp;                dto.getPrimaryName(),</b>
+<b class="fc">&nbsp;                dto.getPrimaryEmail(),</b>
+<b class="fc">&nbsp;                dto.getPrimaryPhone()</b>
+&nbsp;        ));
+<b class="fc">&nbsp;        client.setAnnualTurnover(dto.getAnnualTurnover());</b>
+<b class="fc">&nbsp;        client.setDocumentsSubmitted(dto.isDocumentsSubmitted());</b>
+&nbsp;
+<b class="fc">&nbsp;        Client updated =  clientRepo.save(client);</b>
+<b class="fc">&nbsp;        return mapToDto(updated);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Helper method to convert Client entity to ClientResponse DTO
+&nbsp;     */
+&nbsp;    private ClientResponse mapToDto(Client client) {
+<b class="fc">&nbsp;        return ClientResponse.builder()</b>
+<b class="fc">&nbsp;                .id(client.getId())</b>
+<b class="fc">&nbsp;                .companyName(client.getCompanyName())</b>
+<b class="fc">&nbsp;                .industry(client.getIndustry())</b>
+<b class="fc">&nbsp;                .address(client.getAddress())</b>
+<b class="fc">&nbsp;                .primaryName(client.getPrimaryContact().getName())</b>
+<b class="fc">&nbsp;                .primaryEmail(client.getPrimaryContact().getEmail())</b>
+<b class="fc">&nbsp;                .primaryPhone(client.getPrimaryContact().getPhone())</b>
+<b class="fc">&nbsp;                .annualTurnover(client.getAnnualTurnover())</b>
+<b class="fc">&nbsp;                .documentsSubmitted(client.isDocumentsSubmitted())</b>
+<b class="fc">&nbsp;                .build();</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2026-01-12 18:29</div>
+</div>
+</body>
+</html>

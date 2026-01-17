@@ -1,0 +1,115 @@
+<div class="credit-page">
+
+  <!-- ===== HEADER ===== -->
+  <header class="rm-header">
+    <div class="bank-brand">
+      <span class="bank-logo">🏦</span>
+      <h2>CBS BANK</h2>
+    </div>
+
+    <div class="header-right">
+      <span class="rm-role">RM</span>
+      <button
+        mat-raised-button
+        type="button"
+        class="logout-btn"
+        (click)="logout()"
+      >
+        Logout
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== CONTENT ===== -->
+  <div class="credit-container">
+    <mat-card class="credit-card">
+
+      <!-- ACTION BAR -->
+      <div class="body-actions">
+        <button
+          mat-stroked-button
+          class="back-btn"
+          routerLink="/rm/dashboard">
+          ← Back to Dashboard
+        </button>
+      </div>
+
+      <!-- TITLE -->
+      <h2 class="page-title">Credit Request List</h2>
+
+      <!-- LOADING -->
+      <p class="loading-text" *ngIf="loading">
+        Loading credit requests...
+      </p>
+
+      <!-- TABLE -->
+      <table
+        mat-table
+        [dataSource]="creditRequests"
+        class="mat-elevation-z8"
+        *ngIf="!loading">
+
+          <!-- <caption>Credit Request List</caption> -->
+        <!-- ID -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let c">
+            {{ c.id | slice:0:8 }}...
+          </td>
+        </ng-container>
+
+        <!-- CLIENT -->
+        <ng-container matColumnDef="clientId">
+          <th mat-header-cell *matHeaderCellDef>Client</th>
+          <td mat-cell *matCellDef="let c">
+            {{ c.clientId | slice:0:6 }}...
+          </td>
+        </ng-container>
+
+        <!-- AMOUNT -->
+        <ng-container matColumnDef="requestedAmount">
+          <th mat-header-cell *matHeaderCellDef>Amount</th>
+          <td mat-cell *matCellDef="let c">
+            ₹ {{ c.requestedAmount | number }}
+          </td>
+        </ng-container>
+
+        <!-- TENURE -->
+        <ng-container matColumnDef="tenureMonths">
+          <th mat-header-cell *matHeaderCellDef>Tenure</th>
+          <td mat-cell *matCellDef="let c">
+            {{ c.tenureMonths }} months
+          </td>
+        </ng-container>
+
+        <!-- PURPOSE -->
+        <ng-container matColumnDef="purpose">
+          <th mat-header-cell *matHeaderCellDef>Purpose</th>
+          <td mat-cell *matCellDef="let c">
+            {{ c.purpose }}
+          </td>
+        </ng-container>
+
+        <!-- STATUS -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let c">
+            <span class="status-pill" [ngClass]="c.status?.toLowerCase()">
+              {{ c.status }}
+            </span>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+    </mat-card>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="page-footer">
+    © 2026 CBS BANK. Secure Credit Platform.
+  </footer>
+
+</div>

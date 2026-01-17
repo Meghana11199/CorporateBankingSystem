@@ -1,0 +1,61 @@
+<div class="rm-dashboard">
+
+  <!-- ================= HEADER ================= -->
+  <header class="rm-header">
+    <div class="bank-brand">
+      <span class="bank-logo">🏦</span>
+      <h2>CBS BANK</h2>
+    </div>
+
+    <div class="header-right">
+      <span class="rm-role">RM</span>
+      <button mat-raised-button class="logout-btn" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= BODY ================= -->
+  <main class="rm-body">
+
+    <!-- ===== DASHBOARD CONTENT (DEFAULT PAGE) ===== -->
+
+<div
+  class="dashboard-content"
+  *ngIf="router.url === '/rm/dashboard'">
+      <h2 class="section-title">Relationship Manager Dashboard</h2>
+
+      <div class="rm-grid">
+        <mat-card class="rm-card" (click)="goClients()">
+          <h3>Clients</h3>
+          <p>View & manage corporate clients</p>
+        </mat-card>
+
+        <mat-card class="rm-card" (click)="goCreateClient()">
+          <h3>Create Client</h3>
+          <p>Add a new corporate customer</p>
+        </mat-card>
+
+        <mat-card class="rm-card" (click)=" goCreateCredit()">
+          <h3>Credit Requests</h3>
+          <p>Create loan & credit applications</p>
+        </mat-card>
+         <mat-card class="rm-card" (click)="goCreditList()">
+          <h3>Credit Request List</h3>
+          <p>View all submitted credit requests</p>
+        </mat-card>
+      </div>
+    </div>
+    
+
+    <!-- 🔁 CHILD ROUTES RENDER HERE -->
+    <router-outlet></router-outlet>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="rm-footer">
+    © 2026 CBS BANK. Secure RM Dashboard.
+  </footer>
+
+</div>

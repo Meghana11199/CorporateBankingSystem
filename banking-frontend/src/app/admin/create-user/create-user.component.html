@@ -1,0 +1,89 @@
+<div class="create-user-page">
+
+  <!-- ================= HEADER ================= -->
+  <header class="admin-header">
+    <div class="bank-brand">
+      <span class="bank-logo">🏦</span>
+      <h2>CBS BANK</h2>
+    </div>
+
+    <div class="header-right">
+      <span class="admin-role">ADMIN</span>
+      <button mat-raised-button class="logout-btn" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= BODY ================= -->
+  <main class="create-user-body">
+
+   
+  
+
+    <!-- Form Card -->
+    <div class="create-user-container">
+      <mat-card class="create-user-card">
+
+           <div class="top-bar">
+      <button
+        mat-stroked-button
+        color="primary"
+        class="back-btn"
+        (click)="goBack()">
+        ← Back to Dashboard
+      </button>
+    </div>
+        <h2 style="font-size: 25px;">Create Employee</h2>
+        <p class="subtitle">
+          Add a new employee to the CBS Bank system
+        </p>
+
+        <form [formGroup]="userForm" (ngSubmit)="submit()">
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="role">
+              <mat-option *ngFor="let r of roles" [value]="r">
+                {{ r }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <button
+            mat-raised-button
+            color="primary"
+            class="create-btn"
+            type="submit"
+            [disabled]="userForm.invalid">
+            Create Employee
+          </button>
+
+        </form>
+
+      </mat-card>
+    </div>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="admin-footer">
+    © 2026 CBS BANK. Secure Admin Panel.
+  </footer>
+
+</div>

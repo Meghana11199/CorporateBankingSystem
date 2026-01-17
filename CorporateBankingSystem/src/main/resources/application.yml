@@ -1,0 +1,2 @@
+admin:
+  password: ${ADMIN_PASSWORD}
